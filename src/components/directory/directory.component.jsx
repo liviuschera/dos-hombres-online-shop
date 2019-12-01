@@ -40,7 +40,13 @@ const Directory = props => {
   return (
     <div className="directory-menu">
       {menuItems.map(({ id, title, imageUrl, size, linkUrl }) => (
-        <MenuItem key={id} title={title.toUpperCase()} subtitle="SHOP NOW" />
+        <MenuItem
+          key={id}
+          title={title.toUpperCase()}
+          imageUrl={imageUrl}
+          size={size}
+          subtitle="SHOP NOW"
+        />
       ))}
     </div>
   );
