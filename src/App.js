@@ -1,12 +1,15 @@
 import React from "react";
 import HomePage from "./pages/homepage/homepage.component";
+import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 
 function App() {
   return (
-    <div>
+    // <div>
+    <BrowserRouter>
       <HomePage />
-    </div>
+    </BrowserRouter>
+    // </div>
   );
 }
 

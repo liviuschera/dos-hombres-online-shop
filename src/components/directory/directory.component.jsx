@@ -39,14 +39,8 @@ const Directory = props => {
   ]);
   return (
     <div className="directory-menu">
-      {menuItems.map(({ id, title, imageUrl, size, linkUrl }) => (
-        <MenuItem
-          key={id}
-          title={title.toUpperCase()}
-          imageUrl={imageUrl}
-          size={size}
-          subtitle="SHOP NOW"
-        />
+      {menuItems.map(({ id, ...otherProps }) => (
+        <MenuItem key={id} {...otherProps} />
       ))}
     </div>
   );
