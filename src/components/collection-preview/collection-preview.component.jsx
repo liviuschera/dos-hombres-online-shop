@@ -10,14 +10,9 @@ function CollectionPreview({ title, items }) {
         {console.log(items)}
         {items
           .filter((item, index) => index < 4)
-          .map(item => (
+          .map(({ id, ...otherItemProps }) => (
             // <div key={item.id}>{item.name}</div>
-            <CollectionItem
-              key={item.id}
-              name={item.name}
-              price={item.price}
-              imageUrl={item.imageUrl}
-            />
+            <CollectionItem key={id} {...otherItemProps} />
           ))}
       </div>
     </div>
