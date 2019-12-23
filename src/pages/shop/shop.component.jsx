@@ -6,7 +6,7 @@ export default function ShopPage() {
   const [collections, setCollections] = useState(SHOP_DATA);
   return (
     <div>
-      <h1>SHOP PAGE</h1>
+      {/* <h1>SHOP PAGE</h1> */}
       {collections.map(({ id, ...otherProps }) => (
         <CollectionPreview key={id} {...otherProps} />
       ))}
