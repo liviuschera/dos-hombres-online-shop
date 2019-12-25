@@ -3,7 +3,8 @@ import MenuItem from "../../components/menu-item/menu-item.component";
 import "./directory.styles.scss";
 
 const Directory = props => {
-  const [menuItems, setMenuItems] = useState([
+  const [menuItems, setMenuItems] = useState();
+  setMenuItems([
     {
       title: "hats",
       imageUrl: "https://i.ibb.co/cvpntL1/hats.png",

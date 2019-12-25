@@ -3,7 +3,9 @@ import SHOP_DATA from "./shop.data";
 import CollectionPreview from "../../components/collection-preview/collection-preview.component";
 
 export default function ShopPage() {
-  const [collections, setCollections] = useState(SHOP_DATA);
+  const [collections, setCollections] = useState();
+  setCollections(SHOP_DATA);
+
   return (
     <div>
       {/* <h1>SHOP PAGE</h1> */}
