@@ -3,8 +3,8 @@ import MenuItem from "../../components/menu-item/menu-item.component";
 import "./directory.styles.scss";
 
 const Directory = props => {
-  const [menuItems, setMenuItems] = useState();
-  setMenuItems([
+  // const [menuItems, setMenuItems] = useState();
+  const menuItems = [
     {
       title: "hats",
       imageUrl: "https://i.ibb.co/cvpntL1/hats.png",
@@ -37,7 +37,7 @@ const Directory = props => {
       id: 5,
       linkUrl: "shop/mens"
     }
-  ]);
+  ];
   return (
     <div className="directory-menu">
       {menuItems.map(({ id, ...otherProps }) => (
