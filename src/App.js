@@ -5,16 +5,20 @@ import SignInAndSignUpPage from "../src/pages/sign-in-and-sign-up/sign-in-and-si
 
 import { Switch, Route } from "react-router-dom";
 import Header from "./components/header/header.component";
-import { auth } from "./firebase/firebase.utils";
+import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import "./App.scss";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
-    const unsubscribeFromAuth = auth.onAuthStateChanged(user => {
-      setCurrentUser(user);
-      console.log(currentUser);
+    const unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
+      // setCurrentUser(user);
+      console.log(user.uid);
+
+      const createUser = await createUserProfileDocument(user);
+      setCurrentUser(createUser.id);
+      // console.log(currentUser);
     });
     return () => unsubscribeFromAuth();
   }, [currentUser]);
