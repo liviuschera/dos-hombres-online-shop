@@ -12,12 +12,12 @@ function SignIn() {
     event.preventDefault();
 
     setState({ email: "", password: "" });
-    console.log(state);
+    // console.log(state);
   };
 
   const handleChange = event => {
     const { value, name } = event.target;
-    console.log(`value: ${value} | name: ${name}`);
+    // console.log(`value: ${value} | name: ${name}`);
 
     setState(prevState => {
       const newState = { ...prevState, ...{ [name]: value } };
