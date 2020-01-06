@@ -21,7 +21,7 @@ function SignIn() {
 
     setState(prevState => {
       const newState = { ...prevState, ...{ [name]: value } };
-      console.log("onchange: ", newState);
+      // console.log("onchange: ", newState);
       return newState;
     });
   };
@@ -35,7 +35,6 @@ function SignIn() {
         <FormInput
           type="text"
           name="email"
-          id="email"
           label="Email"
           value={state.email}
           handleChange={handleChange}
@@ -45,7 +44,6 @@ function SignIn() {
         <FormInput
           type="password"
           name="password"
-          id="password"
           label="Password"
           value={state.password}
           handleChange={handleChange}

@@ -24,6 +24,7 @@ function App() {
     });
     return () => unsubscribeFromAuth();
   }, []);
+  useEffect(() => console.log(currentUser));
 
   return (
     <div>

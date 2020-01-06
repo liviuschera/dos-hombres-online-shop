@@ -13,10 +13,11 @@ const CONFIG = {
   measurementId: "G-EH6B1DM9XH"
 };
 
-export const createUserProfileDocument = async (userAuth, additionalData) => {
+export async function createUserProfileDocument(userAuth, additionalData) {
   if (!userAuth) return;
 
   const userRef = firestore.doc(`users/${userAuth.uid}`);
+
   const snapShot = await userRef.get();
 
   if (!snapShot.exists) {
@@ -35,7 +36,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   }
 
   return userRef;
-};
+}
 
 firebase.initializeApp(CONFIG);
 

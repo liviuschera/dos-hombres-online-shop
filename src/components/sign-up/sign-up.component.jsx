@@ -6,10 +6,6 @@ import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
 import "./sign-up.styles.scss";
 
 export default function SignUp(params) {
-  //   const [displayName, setDisplayName] = useState("");
-  //   const [email, setEmail] = useState("");
-  //   const [password, setPassword] = useState("");
-  //   const [confirmPassword, setConfirmPassword] = useState("");
   const [state, setState] = useState({
     displayName: "",
     email: "",
@@ -18,15 +14,19 @@ export default function SignUp(params) {
   });
 
   async function handleSubmit(event) {
-    const { email, displayName, password, confirmPassword } = state;
+    // const { email, displayName, password, confirmPassword } = state;
     event.preventDefault();
-    if (password !== confirmPassword) {
+    if (state.password !== state.confirmPassword) {
       alert("Passwords dont't match");
       return;
     }
     try {
-      const { user } = auth.createUserWithEmailAndPassword(email, password);
-      await createUserProfileDocument(user, { displayName });
+      const { user } = await auth.createUserWithEmailAndPassword(
+        state.email,
+        state.password
+      );
+
+      await createUserProfileDocument(user, { displayName: state.displayName });
       // Clear the form
       setState({
         displayName: "",
@@ -42,7 +42,7 @@ export default function SignUp(params) {
   function handleChange(event) {
     const { name, value } = event.target;
     setState(prevState => {
-      const newState = { prevState, ...{ [name]: value } };
+      const newState = { ...prevState, ...{ [name]: value } };
       return newState;
     });
   }
@@ -62,7 +62,7 @@ export default function SignUp(params) {
         />
         <FormInput
           type="email"
-          name="email`"
+          name="email"
           value={state.email}
           onChange={handleChange}
           label="Email"
