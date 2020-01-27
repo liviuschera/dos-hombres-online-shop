@@ -1,8 +1,23 @@
+// const INITIAL_STATE = {
+//   currentUser: null
+// };
+
+// export default function userReducer(state = INITIAL_STATE, action) {
+//   switch (action.type) {
+//     case "SET_CURRENT_USER":
+//       return {
+//         ...state,
+//         currentUser: action.payload
+//       };
+//     default:
+//       return state;
+//   }
+// }
 const INITIAL_STATE = {
   currentUser: null
 };
 
-export default function userReducer(state = INITIAL_STATE, action) {
+const userReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case "SET_CURRENT_USER":
       return {
@@ -12,4 +27,6 @@ export default function userReducer(state = INITIAL_STATE, action) {
     default:
       return state;
   }
-}
+};
+
+export default userReducer;
