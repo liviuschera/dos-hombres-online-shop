@@ -7,9 +7,10 @@ import { ReactComponent as Logo } from "../../assets/shop.svg";
 import "./header.styles.scss";
 
 function Header() {
-  const currentUser = useSelector(state => ({
+  const user = useSelector(state => ({
     currentUser: state.user.currentUser
   }));
+  console.log(user.currentUser);
 
   return (
     <div className="header">
@@ -23,7 +24,7 @@ function Header() {
         <Link to="/contact" className="option">
           CONTACT
         </Link>
-        {currentUser ? (
+        {user.currentUser ? (
           <div className="option" onClick={() => auth.signOut()}>
             SIGN OUT
           </div>
