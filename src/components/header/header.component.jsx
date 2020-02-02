@@ -4,6 +4,8 @@ import { auth } from "../../firebase/firebase.utils";
 import { useSelector } from "react-redux";
 
 import { ReactComponent as Logo } from "../../assets/shop.svg";
+import CartIcon from "../cart-icon/cart-icon.component";
+
 import "./header.styles.scss";
 
 function Header() {
@@ -34,6 +36,7 @@ function Header() {
           </Link>
         )}
       </div>
+      <CartIcon></CartIcon>
     </div>
   );
 }
