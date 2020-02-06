@@ -10,14 +10,12 @@ import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import "./header.styles.scss";
 
 function Header() {
-  const user = useSelector(state => ({
+  const { currentUser } = useSelector(state => ({
     currentUser: state.user.currentUser
   }));
-  const cart = useSelector(state => ({
+  const { hidden } = useSelector(state => ({
     hidden: state.cart.hidden
   }));
-
-  console.log(cart.hidden);
 
   return (
     <div className="header">
@@ -31,7 +29,7 @@ function Header() {
         <Link to="/contact" className="option">
           CONTACT
         </Link>
-        {user.currentUser ? (
+        {currentUser ? (
           <div className="option" onClick={() => auth.signOut()}>
             SIGN OUT
           </div>
@@ -42,7 +40,7 @@ function Header() {
         )}
         <CartIcon />
       </div>
-      {cart.hidden ? null : <CartDropdown />}
+      {hidden ? null : <CartDropdown />}
     </div>
   );
 }
