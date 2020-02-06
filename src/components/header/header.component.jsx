@@ -13,6 +13,11 @@ function Header() {
   const user = useSelector(state => ({
     currentUser: state.user.currentUser
   }));
+  const cart = useSelector(state => ({
+    hidden: state.cart.hidden
+  }));
+
+  console.log(cart.hidden);
 
   return (
     <div className="header">
@@ -37,7 +42,7 @@ function Header() {
         )}
         <CartIcon />
       </div>
-      <CartDropdown />
+      {cart.hidden ? null : <CartDropdown />}
     </div>
   );
 }
