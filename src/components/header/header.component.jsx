@@ -13,7 +13,6 @@ function Header() {
   const user = useSelector(state => ({
     currentUser: state.user.currentUser
   }));
-  console.log(user.currentUser);
 
   return (
     <div className="header">
