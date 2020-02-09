@@ -13,12 +13,10 @@ import { setCurrentUser } from "./redux/user/user.actions";
 import "./App.scss";
 
 function App() {
-  const user = useSelector(state => ({
+  const { currentUser } = useSelector(state => ({
     currentUser: state.user.currentUser
   }));
   const dispatch = useDispatch();
-
-  // console.log(user);
 
   useEffect(() => {
     const unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
@@ -44,7 +42,7 @@ function App() {
           exact
           path="/signin"
           render={() =>
-            user.currentUser ? <Redirect to="/" /> : <SignInAndSignUpPage />
+            currentUser ? <Redirect to="/" /> : <SignInAndSignUpPage />
           }
         />
       </Switch>
