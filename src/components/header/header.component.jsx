@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { auth } from "../../firebase/firebase.utils";
 import { useSelector } from "react-redux";
 
+import { selectCurrentUser } from "../../redux/user/user.selectors";
+import { selectCartHidden } from "../../redux/cart/cart.selectors";
+
 import { ReactComponent as Logo } from "../../assets/shop.svg";
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
@@ -10,12 +13,8 @@ import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import "./header.styles.scss";
 
 function Header() {
-  const { currentUser } = useSelector(state => ({
-    currentUser: state.user.currentUser
-  }));
-  const { hidden } = useSelector(state => ({
-    hidden: state.cart.hidden
-  }));
+  const currentUser = useSelector(state => selectCurrentUser(state));
+  const hidden = useSelector(state => selectCartHidden(state));
 
   return (
     <div className="header">
