@@ -8,37 +8,7 @@ import { ReactComponent as ShoppingIcon } from "../../assets/cart.svg";
 import "./cart-icon.styles.scss";
 
 export default function CartIcon() {
-  // const memo = useMemo();
-  // const cb = useCallback()
   const itemCount = useSelector(state => selectCartItemsCount(state));
-  // const { itemCount } = useSelector(
-  //   ({ cart: { cartItems } }) => selectCartItemsCount(cartItems),
-  //   shallowEqual
-  // );
-
-  // const { itemCount } = useSelector(state => {
-  //   console.log("I'm being called!");
-
-  //   return {
-  //     itemCount: state.cart.cartItems.reduce(
-  //       (accumulatedQuantity, cartItem) =>
-  //         accumulatedQuantity + cartItem.quantity,
-  //       0
-  //     )
-  //   };
-  // });
-
-  // const { itemCount } = useSelector(({ cart: { cartItems } }) => {
-  //   console.log("I am being called!");
-
-  //   return {
-  //     itemCount: cartItems.reduce(
-  //       (accumulatedQuantity, cartItem) =>
-  //         accumulatedQuantity + cartItem.quantity,
-  //       0
-  //     )
-  //   };
-  // });
   const dispatch = useDispatch();
 
   return (
