@@ -6,6 +6,8 @@ import {
   selectCartTotal
 } from "../../redux/cart/cart.selectors";
 
+import CheckoutItem from "../../components/checkout-item/checkout-item.component";
+
 import "./checkout.syles.scss";
 
 export default function CheckoutPage() {
@@ -25,9 +27,15 @@ export default function CheckoutPage() {
           <span>Quantity</span>
         </div>
         <div className="header-block">
+          <span>Price</span>
+        </div>
+        <div className="header-block">
           <span>Remove</span>
         </div>
       </header>
+      {cartItems.map(cartItem => (
+        <CheckoutItem key={cartItem.id} cartItem={cartItem} />
+      ))}
       <div className="total">
         <span>TOTAL: ${total}</span>
       </div>
