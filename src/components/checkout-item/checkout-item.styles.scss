@@ -1,14 +1,14 @@
 .checkout-item {
   width: 100%;
   display: flex;
-  min-height: 10rem;
+  min-height: 5rem;
   border-bottom: 0.1rem solid darkgrey;
   padding: 1.5rem 0;
   font-size: 2rem;
   align-items: center;
 
   .image-container {
-    width: 23%;
+    width: 15%;
     padding-right: 1.5rem;
 
     img {
@@ -19,7 +19,7 @@
   .name,
   .quantity,
   .price {
-    width: 23%;
+    width: 28%;
   }
 
   .quantity {
@@ -27,7 +27,7 @@
   }
 
   .remove-button {
-    padding-left: 1.2rem;
+    padding-right: 2.2rem;
     cursor: pointer;
   }
 }

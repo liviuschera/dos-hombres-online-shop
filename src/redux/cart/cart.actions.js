@@ -7,3 +7,7 @@ export function toggleCartHidden() {
 export function addItem(item) {
   return { type: CartActionTypes.ADD_ITEM, payload: item };
 }
+
+export function removeItem(item) {
+  return { type: CartActionTypes.REMOVE_ITEM, payload: item };
+}

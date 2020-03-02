@@ -14,3 +14,14 @@ export function addItemToCart(cartItems, cartItemToAdd) {
 
   return [...cartItems, { ...cartItemToAdd, quantity: 1 }];
 }
+
+export function removeItemFromCart(cartItems, cartItemToRemove) {
+  const existingCartItemIndex = cartItems.findIndex(
+    cartItem => cartItem.id === cartItemToRemove.id
+  );
+
+  if (existingCartItemIndex >= 0) {
+    cartItems.splice(existingCartItemIndex, 1);
+  }
+  return [...cartItems];
+}
