@@ -1,8 +1,11 @@
 import React from "react";
-import SHOP_DATA from "./shop.data";
+import { useSelector } from "react-redux";
+import { selectShopCollections } from "../../redux/shop/shop.selectors";
+// import SHOP_DATA from "./shop.data";
 import CollectionPreview from "../../components/collection-preview/collection-preview.component";
 
 export default function ShopPage() {
+  const SHOP_DATA = useSelector(state => selectShopCollections(state));
   // const [collections, setCollections] = useState(SHOP_DATA);
   // // setCollections(SHOP_DATA);
   // console.log(collections);
