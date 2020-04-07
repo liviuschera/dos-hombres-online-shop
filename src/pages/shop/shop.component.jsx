@@ -1,22 +1,16 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { selectShopCollections } from "../../redux/shop/shop.selectors";
-// import SHOP_DATA from "./shop.data";
-import CollectionPreview from "../../components/collection-preview/collection-preview.component";
+import { Route } from "react-router-dom";
+import CollectionsOverview from "../../components/collections-overview/collections-overview.component";
+import CollectionPage from "../collection/collection.component";
 
-export default function ShopPage() {
-  const SHOP_DATA = useSelector(state => selectShopCollections(state));
-  // const [collections, setCollections] = useState(SHOP_DATA);
-  // // setCollections(SHOP_DATA);
-  // console.log(collections);
-  // const col = await collections;
+export default function ShopPage({ match }) {
+  // we have access to match object because inside of App.js the shop page is being nested in the Route and route automatically passes the 3 objects into component as props: match, history, location
+  console.log(match);
 
   return (
-    <div>
-      {/* <h1>SHOP PAGE</h1> */}
-      {SHOP_DATA.map(({ id, ...otherProps }) => (
-        <CollectionPreview key={id} {...otherProps} />
-      ))}
+    <div className="shop-page">
+      <Route exact path={`${match.path}`} component={CollectionsOverview} />
+      <Route path={`${match.path}/:collectionId`} component={CollectionPage} />
     </div>
   );
 }
