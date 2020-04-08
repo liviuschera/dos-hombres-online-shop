@@ -1,11 +1,22 @@
 import React from "react";
 
-import CollectionItem from "../../components/collection-item/collection-item.component";
+import { useSelector } from "react-redux";
+import { selectCollection } from "../../redux/shop/shop.selectors";
 
 import "./collection.styles.scss";
 
 export default function CollectionPage({ match }) {
-  console.log(match.params.collectionId);
+  const collection = useSelector((state) =>
+    selectCollection(match.params.collectionId)(state)
+  );
 
-  return <div className="collection-page">CollectionPage</div>;
+  console.log(collection.items);
+
+  // console.log(match.params.collectionId);
+
+  return (
+    <div className="collection-page">
+      {collection.items.map((item) => item.name)}
+    </div>
+  );
 }

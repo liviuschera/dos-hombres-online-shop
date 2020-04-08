@@ -5,7 +5,7 @@ import CollectionPage from "../collection/collection.component";
 
 export default function ShopPage({ match }) {
   // we have access to match object because inside of App.js the shop page is being nested in the Route and route automatically passes the 3 objects into component as props: match, history, location
-  console.log(match);
+  // console.log(match);
 
   return (
     <div className="shop-page">
