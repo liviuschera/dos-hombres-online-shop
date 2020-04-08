@@ -6,11 +6,13 @@ import CollectionPreview from "../../components/collection-preview/collection-pr
 import "./collections-overview.styles.scss";
 
 export default function CollectionsOverview() {
-  const collections = useSelector(state => selectShopCollections(state));
+  const collections = useSelector((state) => selectShopCollections(state));
+  // console.log(Object.values(collections));
+
   return (
     <div className="collections-overview">
-      {collections.map(({ id, ...otherProps }) => (
-        <CollectionPreview key={id} {...otherProps} />
+      {Object.values(collections).map((collection) => (
+        <CollectionPreview key={collection.id} {...collection} />
       ))}
     </div>
   );

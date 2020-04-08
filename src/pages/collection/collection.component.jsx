@@ -7,8 +7,9 @@ import { selectCollection } from "../../redux/shop/shop.selectors";
 import "./collection.styles.scss";
 
 export default function CollectionPage({ match }) {
-  // passing ownProps similar to connectToProps as it needs to be done through closure
+  // passing ownProps (similar to connectToProps) through closure
   const { items, title } = useSelector((state) =>
+    // const collection = useSelector((state) =>
     selectCollection(match.params.collectionId)(state)
   );
 
@@ -18,7 +19,7 @@ export default function CollectionPage({ match }) {
         {title}
         <div className="items">
           {items.map((item) => (
-            <CollectionItem key={item.key} item={item} />
+            <CollectionItem key={item.id} item={item} />
           ))}
         </div>
       </h2>
