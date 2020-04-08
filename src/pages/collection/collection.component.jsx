@@ -1,22 +1,27 @@
 import React from "react";
 
 import { useSelector } from "react-redux";
+import CollectionItem from "../../components/collection-item/collection-item.component";
 import { selectCollection } from "../../redux/shop/shop.selectors";
 
 import "./collection.styles.scss";
 
 export default function CollectionPage({ match }) {
-  const collection = useSelector((state) =>
+  // passing ownProps similar to connectToProps as it needs to be done through closure
+  const { items, title } = useSelector((state) =>
     selectCollection(match.params.collectionId)(state)
   );
 
-  console.log(collection.items);
-
-  // console.log(match.params.collectionId);
-
   return (
     <div className="collection-page">
-      {collection.items.map((item) => item.name)}
+      <h2 className="title">
+        {title}
+        <div className="items">
+          {items.map((item) => (
+            <CollectionItem key={item.key} item={item} />
+          ))}
+        </div>
+      </h2>
     </div>
   );
 }
