@@ -16,7 +16,7 @@ export default function StripeCheckoutButton({ price }) {
   return (
     <StripeCheckout
       label="Pay Now"
-      name="E-Commerce Shop"
+      name="Dos Hombres Online Shop"
       billingAddress
       shippingAddress
       image={Logo}
