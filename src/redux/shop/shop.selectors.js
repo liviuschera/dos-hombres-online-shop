@@ -12,11 +12,3 @@ export const selectCollection = (collectionUrlParam) =>
     [selectShopCollections],
     (collections) => collections[collectionUrlParam]
   );
-
-// export function selectCollection(collectionUrlParam) {
-//   return createSelector([selectShopCollections], (collections) =>
-//     collections.find(
-//       (collection) => collection.id === COLLECTION_ID_MAP[collectionUrlParam]
-//     )
-//   );
-// }

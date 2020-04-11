@@ -9,7 +9,6 @@ import "./collection.styles.scss";
 export default function CollectionPage({ match }) {
   // passing ownProps (similar to connectToProps) through closure
   const { items, title } = useSelector((state) =>
-    // const collection = useSelector((state) =>
     selectCollection(match.params.collectionId)(state)
   );
 

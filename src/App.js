@@ -9,21 +9,33 @@ import ShopPage from "../src/pages/shop/shop.component";
 import SignInAndSignUpPage from "../src/pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
 import CheckoutPage from "./pages/checkout/checkout.component";
 
-import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
+import {
+  auth,
+  createUserProfileDocument,
+  addCollectionAndDocuments,
+} from "./firebase/firebase.utils";
 import { setCurrentUser } from "./redux/user/user.actions";
 import { selectCurrentUser } from "./redux/user/user.selectors";
+import { selectShopCollections } from "./redux/shop/shop.selectors";
 
 import "./App.scss";
 
 function App() {
-  const currentUser = useSelector(state => selectCurrentUser(state));
+  const currentUser = useSelector((state) => selectCurrentUser(state));
+  const collectionsObject = useSelector((state) =>
+    selectShopCollections(state)
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+    addCollectionAndDocuments("collections", collectionsObject);
+  }, [collectionsObject]);
+
+  useEffect(() => {
+    const unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
-        userRef.onSnapshot(snapShot =>
+        userRef.onSnapshot((snapShot) =>
           dispatch(setCurrentUser({ id: snapShot.id, ...snapShot.data() }))
         );
       } else {
