@@ -12,24 +12,24 @@ import CheckoutPage from "./pages/checkout/checkout.component";
 import {
   auth,
   createUserProfileDocument,
-  addCollectionAndDocuments,
+  // addCollectionAndDocuments,
 } from "./firebase/firebase.utils";
 import { setCurrentUser } from "./redux/user/user.actions";
 import { selectCurrentUser } from "./redux/user/user.selectors";
-import { selectShopCollections } from "./redux/shop/shop.selectors";
+// import { selectShopCollections } from "./redux/shop/shop.selectors";
 
 import "./App.scss";
 
 function App() {
   const currentUser = useSelector((state) => selectCurrentUser(state));
-  const collectionsObject = useSelector((state) =>
-    selectShopCollections(state)
-  );
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    addCollectionAndDocuments("collections", collectionsObject);
-  }, [collectionsObject]);
+  // const collectionsObject = useSelector((state) =>
+  //   selectShopCollections(state)
+  // );
+  // useEffect(() => {
+  //   addCollectionAndDocuments("collections", collectionsObject);
+  // }, [collectionsObject]);
 
   useEffect(() => {
     const unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
