@@ -49,9 +49,11 @@ export function convertCollectionsSnapshotToMap(collections) {
       items,
     };
   });
-  console.log(transformedCollections);
 
-  return () => transformedCollections();
+  return transformedCollections.reduce((accumulator, collection) => {
+    accumulator[collection.title.toLowerCase()] = collection;
+    return accumulator;
+  }, {});
 }
 
 // export async function addCollectionAndDocuments(collectionKey, objectsToAdd) {
