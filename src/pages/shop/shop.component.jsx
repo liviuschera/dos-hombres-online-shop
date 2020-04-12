@@ -10,6 +10,7 @@ import {
 import CollectionsOverview from "../../components/collections-overview/collections-overview.component";
 import CollectionPage from "../collection/collection.component";
 import { updateCollections } from "../../redux/shop/shop.actions";
+import WithSpinner from "../../components/with-spinner/with-spinner.component";
 
 export default function ShopPage({ match }) {
   // we have access to match object because inside of App.js the shop page is being nested in the Route and route automatically passes the 3 objects into component as props: match, history, location
@@ -23,7 +24,7 @@ export default function ShopPage({ match }) {
     collectionRef.onSnapshot(async (snapshot) => {
       const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
       console.log(collectionsMap);
-      dispatch(updateCollections(collectionsMap));
+      WithSpinner(dispatch(updateCollections(collectionsMap)));
     });
   });
 
