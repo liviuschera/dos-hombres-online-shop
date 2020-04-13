@@ -26,7 +26,7 @@ export default function ShopPage({ match }) {
     //  gets run for the first time collectionRef will send
     //  the snapshot representing the code of collections objects
     //  array at the time when this code renders.
-    collectionRef.onSnapshot(async (snapshot) => {
+    collectionRef.get().then((snapshot) => {
       const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
       dispatch(updateCollections(collectionsMap));
       setLoading(false);
