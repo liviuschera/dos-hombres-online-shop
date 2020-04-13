@@ -18,13 +18,12 @@ function SignIn() {
     }
   }
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     const { value, name } = event.target;
-    // console.log(`value: ${value} | name: ${name}`);
 
-    setState(prevState => {
+    setState((prevState) => {
       const newState = { ...prevState, ...{ [name]: value } };
-      // console.log("onchange: ", newState);
+
       return newState;
     });
   };

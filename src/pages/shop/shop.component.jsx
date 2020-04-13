@@ -31,7 +31,7 @@ export default function ShopPage({ match }) {
       dispatch(updateCollections(collectionsMap));
       setLoading(false);
     });
-  });
+  }, [dispatch]);
 
   return (
     <div className="shop-page">
