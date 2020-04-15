@@ -14,7 +14,7 @@ import "./checkout.syles.scss";
 export default function CheckoutPage() {
   const cartItems = useSelector((state) => selectCartItems(state));
   const total = useSelector((state) => selectCartTotal(state));
-
+  const cartDescription = [];
   return (
     <main className="checkout-page">
       <header className="checkout-header">
@@ -34,9 +34,10 @@ export default function CheckoutPage() {
           <span>Remove</span>
         </div>
       </header>
-      {cartItems.map((cartItem) => (
-        <CheckoutItem key={cartItem.id} cartItem={cartItem} />
-      ))}
+      {cartItems.map((cartItem) => {
+        cartDescription.push(`${cartItem.quantity}x ${cartItem.name}`);
+        return <CheckoutItem key={cartItem.id} cartItem={cartItem} />;
+      })}
       <div className="total">
         <span>TOTAL: ${total}</span>
       </div>
@@ -44,7 +45,10 @@ export default function CheckoutPage() {
         *For testing purposes please use this credit card* <br /> 4242 4242 4242
         4242 - Exp: 11/23 - CVV: 123
       </div>
-      <StripeCheckoutButton price={total} />
+      <StripeCheckoutButton
+        price={total}
+        description={cartDescription.join(", ")}
+      />
     </main>
   );
 }

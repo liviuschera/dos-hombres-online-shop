@@ -5,16 +5,18 @@ import axios from "axios";
 
 import Logo from "../../assets/logo.svg";
 
-export default function StripeCheckoutButton({ price }) {
+export default function StripeCheckoutButton({ price, description }) {
   const priceForStripe = price * 100;
   const publishableKey = "pk_test_Lre1Kc3wuH7P6vSq4j5rS1cx00foucyDBj";
+  console.log(description);
+  console.log("sfdddddddddddddddddddddddddddddddddddddddddddddddddddddd");
 
   function onToken(token) {
     axios({
       url: "payment",
       method: "post",
-      description: `Your total is $${price}`,
       data: {
+        description,
         amount: priceForStripe,
         token: token,
       },
