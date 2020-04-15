@@ -6,8 +6,11 @@ import path from "path";
 if (process.env.NODE_ENV !== "production") {
   // import dotenv from "dotenv";
   // dotenv.config();
-  // require("dotenv").config();
+  require("dotenv").config();
 }
+
+// import stripe from "stripe"
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -28,5 +31,21 @@ if (process.env.NODE_ENV === "production") {
       throw error;
     }
     console.log(`Server running on port ${port}`);
+  });
+
+  app.post("/payment", (req, res) => {
+    const body = {
+      source: req.body.token.id,
+      amount: req.body.amount,
+      currency: "aud",
+    };
+  });
+
+  stripe.charges.create(body, (stripeErr, stripeRes) => {
+    if (stripeErr) {
+      res.status(500).send({ error: stripeErr });
+    } else {
+      res.status(200).send({ success: stripeRes });
+    }
   });
 }
